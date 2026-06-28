@@ -38,6 +38,8 @@ COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
 COPY --from=builder /app/src/generated ./src/generated
 
+# Copy dotenv for prisma.config.ts
+COPY --from=builder /app/node_modules/dotenv ./node_modules/dotenv
 # Install Prisma CLI + tsx for migrations and seeding
 COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
